@@ -7,6 +7,7 @@ const pug = require("pug");
 const dotenv = require("dotenv");
 
 dotenv.config();
+const pageRouter = require("./routers/main.js");
 
 const app = express();
 app.set("port", process.env.PORT || 8001);
@@ -28,6 +29,8 @@ app.use(session({
     },
 }));
 
+app.use("/", pageRouter);
+
 app.use((req, res, next) => {
     const error = new Error(`${req.method} ${req.url} 라우터가 없습니다`);
     error.status = 404;
@@ -41,6 +44,6 @@ app.use((err, req, res, next) => {
     res.render("error");
 })
 
-app.listen(app.length("port"), () => {
+app.listen(app.get("port"), () => {
     console.log(app.get("port"), "번 포트에서 대기 중");
 })
