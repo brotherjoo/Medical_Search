@@ -1,0 +1,35 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #212121;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    background-color: #171717;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    float: left;
+    width: 13%;
+    margin: 0px;
+    padding: 0px;
+}
+
+main {
+    float: right;
+    width: 87%;
+    margin: 0px;
+    height: 100%;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+}
