@@ -1,45 +1,51 @@
-form {
-    position: absolute;
-    top: 90%;
-    width: 85%;
-    height: 4%;
-    display: flex;
-    justify-content: center;
-    /* padding: 10px; */
+section {
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-#symptom {
-    width: 100%;
-    height: 100%;
-    background-color: #2F2F2F;
-    border: 0px;
-    caret-color: transparent;
-    border-radius: 30px;
-}
-
-input:focus {
-    outline: none;
+.symptom {
+  position: absolute;
+  bottom: 8%;
+  width: 85%;
+  height: 4%;
+  display: flex;
+  justify-content: center;
+  /* padding: 10px; */
 }
 
 div {
-    position: relative;
-    display: flex;
-    width: 55%;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  display: flex;
+  width: 55%;
+  justify-content: center;
+  align-items: center;
+}
+
+#symptom-input {
+  width: 100%;
+  height: 100%;
+  background-color: #2f2f2f;
+  border: 0px;
+  caret-color: transparent;
+  border-radius: 30px;
 }
 
 
 button {
-    position: absolute;
-    top: 5px;
-    bottom: 5px;
-    right: 5px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #676767;
-    border: 0px;
-    aspect-ratio: 1/1;
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  right: 5px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #676767;
+  border: 0px;
+  aspect-ratio: 1/1;
+}
+
+input:focus {
+  outline: none;
 }
