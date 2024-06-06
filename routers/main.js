@@ -68,35 +68,8 @@ router.post("/", (req, res, next) => {
     })  //  역순 정렬
 
     console.log(concordance_rate);
-    // console.log(max);
 
-    // let max = [{ name: null, number: null }];
-    // let sub_max = []
-    // let max_number = null;
-    // for (let i = 0; i < concordance_rate.length; i++) {
-    //     if (typeof max[0].name === null) {
-    //         max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
-    //         sub_max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
-    //         sub_max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
-    //         sub_max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
-    //         max_number = i;
-    //     }
-    //     if (max[0].number < concordance_rate[i].number) {
-    //         max = [];
-    //         max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
-    //         max_number = i;
-    //     } else if (max[0].number === concordance_rate) {
-    //         max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
-    //     } else if () {
-
-    //     }
-    // }
-
-
-
-    // console.log(max);   // 전반적으로 상수가 많이 쓰여 개선에 어려움이 있어 보임
-
-    res.render("index", { title: "error" });
+    res.render("layout", { title: "error" });
 });
 
 module.exports = router;
