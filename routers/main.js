@@ -11,7 +11,7 @@ router.use("/", (req, res, next) => {
 
 router.get("/", (req, res, next) => {
     res.render("index", { title: "get /" });
-})
+});
 
 router.post("/", (req, res, next) => {
     const temp = req.body.question.split(",");
@@ -63,26 +63,40 @@ router.post("/", (req, res, next) => {
     // 개선의 가능성이 보이는 알고리즘
     // 후에 개발해서 개선할 예정
 
+    concordance_rate.sort((a, b) => {
+        return b.number - a.number;
+    })  //  역순 정렬
+
     console.log(concordance_rate);
+    // console.log(max);
 
-    // console.log(symptom);
-    // let concordance_rate = [];
-    // for (let i = 0; i < symptoms.length; i++) {
+    // let max = [{ name: null, number: null }];
+    // let sub_max = []
+    // let max_number = null;
+    // for (let i = 0; i < concordance_rate.length; i++) {
+    //     if (typeof max[0].name === null) {
+    //         max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
+    //         sub_max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
+    //         sub_max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
+    //         sub_max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
+    //         max_number = i;
+    //     }
+    //     if (max[0].number < concordance_rate[i].number) {
+    //         max = [];
+    //         max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
+    //         max_number = i;
+    //     } else if (max[0].number === concordance_rate) {
+    //         max.push({ name: concordance_rate[i].name, number: concordance_rate[i].number });
+    //     } else if () {
 
-    //     concordance_rate.push()
-    // }
-
-
-
-    // for (let i = 0; i < symptoms.length; i++) {
-    //     for (let j = 0; i < symptom.length; i++) {
-    //         if (symptom[j] == symptoms[i].main_symptom) {
-    //             symptom[i].concordance_rate++;
-    //         }
     //     }
     // }
 
-    res.render("index", { title: "error" })
-})
+
+
+    // console.log(max);   // 전반적으로 상수가 많이 쓰여 개선에 어려움이 있어 보임
+
+    res.render("index", { title: "error" });
+});
 
 module.exports = router;
