@@ -1,3 +1,30 @@
-<section>
-    
+<section class="text_output">
+    {% if is_outputs %}
+    <!-- 검색결과 값이 있을때 -->
+    <div>
+        <div class="text_icon">
+            <i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>
+        </div>
+        <div>
+            <h3>
+                
+            </h3>
+        </div>
+    </div>
+    {% else %}
+    <!-- 검색결과 값이 없을때 -->
+    <div>
+        <div class="text_icon">
+            <i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>
+        </div>
+        <div class="text_main">
+            <h3>"{{input}}"와(과) 일치하는 결과물이 없습니다</h3>
+            <ul>
+                <li>단어의 철자가 정확한지 확인해보세요.</li>
+                <li>다른 검색어를 사용해보세요.</li>
+                <li>더 일반적인 검색어를 사용해보세요.</li>
+            </ul>
+        </div>
+    </div>
+    {% endif %}
 </section>

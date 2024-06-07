@@ -1,0 +1,35 @@
+.text_output {
+
+    flex-grow: 9;
+    width: 55%;
+}
+
+.text_output>div {
+    color: #ffffff;
+    display: flex;
+}
+
+.text_icon {
+    margin: 30px;
+    margin-top: 50px;
+}
+
+.text_main {
+    margin-top: 50px;
+}
+
+.text_main>h3 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding-bottom: 60px;
+}
+
+.text_main>ul {
+    list-style: inside;
+    margin-left: 30px;
+    font-size: 1.1rem;
+}
+
+.text_main>ul>li {
+    padding: 5px;
+}

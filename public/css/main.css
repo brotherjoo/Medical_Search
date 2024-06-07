@@ -9,6 +9,9 @@ body {
 main {
   width: 87%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header {
@@ -23,5 +26,3 @@ body {
   margin: 0px;
   padding: 0px;
 }
-
-

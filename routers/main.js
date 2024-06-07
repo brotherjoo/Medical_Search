@@ -10,7 +10,7 @@ router.use("/", (req, res, next) => {
 });
 
 router.get("/", (req, res, next) => {
-    res.render("index", { title: "get /" });
+    res.render("layout", { title: "get /" });
 });
 
 router.post("/", (req, res, next) => {
@@ -69,7 +69,27 @@ router.post("/", (req, res, next) => {
 
     console.log(concordance_rate);
 
-    res.render("layout", { title: "error" });
+    let outputs = [];
+    for (let i = 0; i < concordance_rate.length; i++) {
+        outputs.push(concordance_rate[i].name);
+    }
+
+    if (concordance_rate.length === 0) {
+        const is_outputs = false;
+        res.render("layout", {
+            title: "검색결과가 없습니다",
+            input,
+            is_outputs
+        })
+    } else {
+        const is_outputs = true;
+        res.render("layout", {
+            title: "error",
+            input,
+            outputs,
+            is_outputs
+        });
+    }
 });
 
 module.exports = router;
