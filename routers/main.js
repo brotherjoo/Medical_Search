@@ -75,19 +75,38 @@ router.post("/", (req, res, next) => {
     }
 
     if (concordance_rate.length === 0) {
-        const is_outputs = false;
         res.render("layout", {
             title: "검색결과가 없습니다",
             input,
-            is_outputs
+            is_outputs: false
         })
     } else {
-        const is_outputs = true;
+        let main_outputs_temp = [];
+
+        for (let i = 0; i < outputs.length; i++) {
+            if (outputs[0].number != outputs[i].number) {
+                break;
+            }
+            main_outputs_temp.push(outputs[i]);
+        }
+
+        for (let i = 0; i < main_outputs_temp.length; i++) {
+            outputs.shift();
+        }
+
+        const sub_outputs = outputs;
+        const main_outputs = main_outputs_temp.join(", ");
+
+        console.log(outputs, sub_outputs, main_outputs)
+
         res.render("layout", {
             title: "error",
             input,
             outputs,
-            is_outputs
+            main_outputs,
+            sub_outputs,
+            symptoms,
+            is_outputs: true
         });
     }
 });
