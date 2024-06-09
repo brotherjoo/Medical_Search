@@ -1,5 +1,6 @@
 const express = require("express");
 const symptoms = require("../submodels/symptoms.js");
+// const shortenlink = require("../submodels/shortenUrl.js");
 
 const router = express.Router();
 
@@ -33,8 +34,18 @@ router.post("/", (req, res, next) => {
                             break;
                         }
                     }
-                    if (!check) {           // concordance배열에 질병 이름이 없으면 새로 추가
-                        concordance_rate.push({ name: symptoms[i].name, number: 1 });
+                    if (!check) {           // concordance배열에 질병 이름이 없으면 새로 추가(name, number만 추가됨)
+                        concordance_rate.push({ name: symptoms[i].name, number: 1, url: symptoms[i].url });
+                        // shortenlink(symptoms[i].url).then(x => {
+                        //     concordance_rate[concordance_rate.length].url = x
+                        // }
+                        // ).catch(error => {
+                        //     console.log('Failed to shorten URL:', error);
+                        // }
+                        // );
+                        // // concordance_rate.push({
+                        // //     name: symptoms[i].name, number: 1, url: shortenlink(symptoms[i].url).then().catch()
+                        // // });
                     }
                 }
             }
@@ -71,7 +82,10 @@ router.post("/", (req, res, next) => {
 
     let outputs = [];
     for (let i = 0; i < concordance_rate.length; i++) {
-        outputs.push(concordance_rate[i].name);
+        outputs.push({
+            name: concordance_rate[i].name,
+            number: concordance_rate[i].number
+        });
     }
 
     if (concordance_rate.length === 0) {
@@ -79,12 +93,12 @@ router.post("/", (req, res, next) => {
             title: "검색결과가 없습니다",
             input,
             is_outputs: false
-        })
+        });
     } else {
         let main_outputs_temp = [];
 
         for (let i = 0; i < outputs.length; i++) {
-            if (outputs[0].number != outputs[i].number) {
+            if (outputs[0].number !== outputs[i].number) {
                 break;
             }
             main_outputs_temp.push(outputs[i]);
@@ -94,18 +108,31 @@ router.post("/", (req, res, next) => {
             outputs.shift();
         }
 
-        const sub_outputs = outputs;
-        const main_outputs = main_outputs_temp.join(", ");
+        const sub_outputs_temp = outputs;
 
-        console.log(outputs, sub_outputs, main_outputs)
+        const main_outputs = main_outputs_temp.map(x => {
+            return x.name
+        }).join(", ");  //tlqkf
+
+        const sub_outputs = sub_outputs_temp.map(x => {
+            return x.name
+        })
+
+        if (sub_outputs.length === 0) {
+            sub_outputs[0] = null;
+            sub_outputs[1] = null;
+        } else if (sub_outputs.length === 1) {
+            sub_outputs[1] = null;
+        }
+
+        console.log(outputs, sub_outputs, main_outputs);
 
         res.render("layout", {
             title: "error",
             input,
-            outputs,
+            outputs: concordance_rate,
             main_outputs,
             sub_outputs,
-            symptoms,
             is_outputs: true
         });
     }

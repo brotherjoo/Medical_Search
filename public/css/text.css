@@ -1,7 +1,7 @@
 .text_output {
-
-    flex-grow: 9;
+    flex-grow: 8.5;
     width: 55%;
+    margin-left: 50px;
 }
 
 .text_output>div {
@@ -12,10 +12,11 @@
 .text_icon {
     margin: 30px;
     margin-top: 50px;
+    /* font-family: "Font Awesome 4 Free", "Font Awesome 4 Brand"; */
 }
 
 .text_main {
-    margin-top: 50px;
+    margin-top: 65px;
 }
 
 .text_main>h3 {
@@ -24,12 +25,36 @@
     padding-bottom: 60px;
 }
 
-.text_main>ul {
+.main_symptom>h4 {
+    font-size: 1.3rem;
+    padding-bottom: 15px;
+}
+
+.sub_symptom {
+    margin-left: 10px;
+}
+
+.sub_symptom>h5 {
+    font-size: 1.2rem;
+    padding-bottom: 15px;
+    margin-top: 15px;
+}
+
+.text_main>ul,
+.main_symptom>ul,
+.sub_symptom>ul {
     list-style: inside;
     margin-left: 30px;
     font-size: 1.1rem;
 }
 
-.text_main>ul>li {
+.sub_symptom>ul {
+    list-style: circle;
+    margin-left: 20px;
+}
+
+.text_main>ul>li,
+.main_symptom>ul>li,
+.sub_symptom>ul>li {
     padding: 5px;
 }

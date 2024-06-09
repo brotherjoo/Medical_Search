@@ -3,22 +3,33 @@
     <!-- 검색결과 값이 있을때 -->
     <div>
         <div class="text_icon">
-            <i class="fa fa-plus-square fa-2x imoticon" aria-hidden="true"></i>
+            <i class="fa fa-plus-square fa-3x " aria-hidden="true"></i>
         </div>
-        <div>
-            <h3>"{{main_outputs}}"(들)이 가장 의심됩니다.</h3>
-            <ul>
-                {% for output in outputs %}
-                <li></li>
-                {% endfor %}
-            </ul>
+        <div class="text_main">
+            <h3>"{{main_outputs}}"이 가장 의심됩니다.</h3>
+            <div class="main_symptom">
+                <h4>그 외에 의심되는 질환들은 다음과 같습니다.</h4>
+                <ul>
+                    {% for output in sub_outputs %}
+                    <li>{{output}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="sub_symptom">
+                <h5>더 자세한 정보는 아래 <a href="https://www.msdmanuals.com/ko-kr/home">msd</a> 링크로 확인해보세요</h5>
+                <ul>
+                    {% for output in outputs %}
+                    <li>{{output.name}}: <a href="{{output.url}}">{{output.url}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
     {% else %}
     <!-- 검색결과 값이 없을때 -->
     <div>
         <div class="text_icon">
-            <i class="fa fa-plus-square fa-2x imoticon" aria-hidden="true"></i>
+            <i class="fa fa-plus-square fa-3x " aria-hidden="true"></i>
         </div>
         <div class="text_main">
             <h3>"{{input}}"와(과) 일치하는 결과물이 없습니다</h3>
