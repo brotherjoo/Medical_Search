@@ -20,7 +20,8 @@
     "mysql2": "^3.9.7",
     "nunjucks": "^3.2.4",
     "sequelize": "^6.37.3",
-    "sequelize-cli": "^6.6.2"
+    "sequelize-cli": "^6.6.2",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

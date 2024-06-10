@@ -20,7 +20,8 @@
 		{% include "header.html" %}
 	</header>
 	<main>
-		{% include "text.html" %}
+		{% block content %}
+		{% endblock %}
 		{% include "input.html" %}
 	</main>
 </body>

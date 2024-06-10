@@ -4,10 +4,11 @@ const morgan = require("morgan");
 const path = require("path");
 const session = require("express-session");
 const nunjucks = require("nunjucks");
-const dotenv = require("dotenv");
+const favicon = require("serve-favicon");
 
-dotenv.config();
+require("dotenv").config();
 const pageRouter = require("./routers/main.js");
+const searchRouter = require("./routers/search.js");
 
 const app = express();
 app.set("port", process.env.PORT || 8001);
@@ -32,8 +33,10 @@ app.use(session({
         secure: false,
     },
 }));
+// app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
 app.use("/", pageRouter);
+app.use("/search", searchRouter);
 
 app.use((req, res, next) => {
     const error = new Error(`${req.method} ${req.url} 라우터가 없습니다`);
