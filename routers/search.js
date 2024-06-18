@@ -18,7 +18,7 @@ router.post("/", (req, res, next) => {
     const temp = req.body.question.split(",");
     const input = temp.map((x) => x.trim());
 
-    console.log(input);  // 증상 인풋을 내부 배열로 변환
+    console.log(input); // 증상 인풋을 내부 배열로 변환
 
     let concordance_rate = [];
 
@@ -54,15 +54,15 @@ router.post("/", (req, res, next) => {
     // for문 4중 반복의 특성때문에 검색 시간이 길어질것을 염려하여
     // 추후 밑의 코드를 개선해서 삭제 예정
 
-    symptoms.forEach(symptom => {
-        input.forEach(i => {
-            symptom.main_symptom.forEach(sym => {
+    symptoms.forEach((symptom) => {
+        input.forEach((i) => {
+            symptom.main_symptom.forEach((sym) => {
                 if (i === sym) {
-                    let check = false
+                    let check = false;
                     for (let j = 0; j < concordance_rate.length; j++) {
-                        if (typeof concordance_rate[j] !== undefined & concordance_rate[j].name == symptom.name) {
+                        if ((typeof concordance_rate[j] !== undefined) & (concordance_rate[j].name == symptom.name)) {
                             concordance_rate[j].number++;
-                            check = true
+                            check = true;
                             break;
                         }
                     }
@@ -70,13 +70,13 @@ router.post("/", (req, res, next) => {
                         concordance_rate.push({ name: symptom.name, number: 1, url: symptom.url });
                     }
                 }
-            })
-        })
-    }) // 개선된 코드
+            });
+        });
+    }); // 개선된 코드
 
     concordance_rate.sort((a, b) => {
         return b.number - a.number;
-    })  //  역순 정렬
+    }); //  역순 정렬
 
     console.log(concordance_rate);
 
@@ -84,7 +84,7 @@ router.post("/", (req, res, next) => {
     for (let i = 0; i < concordance_rate.length; i++) {
         outputs.push({
             name: concordance_rate[i].name,
-            number: concordance_rate[i].number
+            number: concordance_rate[i].number,
         });
     }
 
@@ -92,7 +92,7 @@ router.post("/", (req, res, next) => {
         res.render("text", {
             title: "검색결과가 없습니다",
             input,
-            is_outputs: false
+            is_outputs: false,
         });
     } else {
         let main_outputs_temp = [];
@@ -110,13 +110,15 @@ router.post("/", (req, res, next) => {
 
         const sub_outputs_temp = outputs;
 
-        const main_outputs = main_outputs_temp.map(x => {
-            return x.name
-        }).join(", ");  //tlqkf
+        const main_outputs = main_outputs_temp
+            .map((x) => {
+                return x.name;
+            })
+            .join(", "); //tlqkf
 
-        const sub_outputs = sub_outputs_temp.map(x => {
-            return x.name
-        })
+        const sub_outputs = sub_outputs_temp.map((x) => {
+            return x.name;
+        });
 
         if (sub_outputs.length === 0) {
             sub_outputs[0] = null;
@@ -133,7 +135,7 @@ router.post("/", (req, res, next) => {
             outputs: concordance_rate,
             main_outputs,
             sub_outputs,
-            is_outputs: true
+            is_outputs: true,
         });
     }
 });

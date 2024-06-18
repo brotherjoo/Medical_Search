@@ -1,12 +1,12 @@
 {% extends 'layout.html' %}
-
+<!-- prettier-ignore -->
 {% block content %}
 <section class="text_output">
     {% if is_outputs %}
     <!-- 검색결과 값이 있을때 -->
     <div>
         <div class="text_icon">
-            <i class="fa fa-plus-square fa-3x " aria-hidden="true"></i>
+            <i class="fa fa-plus-square fa-3x" aria-hidden="true"></i>
         </div>
         <div class="text_main">
             <h3>"{{main_outputs}}"이 가장 의심됩니다.</h3>
@@ -19,10 +19,17 @@
                 </ul>
             </div>
             <div class="sub_symptom">
-                <h5>더 자세한 정보는 아래 <a href="https://www.msdmanuals.com/ko-kr/home">msd</a> 링크로 확인해보세요</h5>
+                <h5>
+                    더 자세한 정보는 아래
+                    <a href="https://www.msdmanuals.com/ko-kr/home">msd</a>
+                    링크로 확인해보세요
+                </h5>
                 <ul>
                     {% for output in outputs %}
-                    <li>{{output.name}}: <a href="{{output.url}}">{{output.url}}</a></li>
+                    <li>
+                        {{output.name}}:
+                        <a href="{{output.url}}">{{output.url}}</a>
+                    </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -32,7 +39,7 @@
     <!-- 검색결과 값이 없을때 -->
     <div>
         <div class="text_icon">
-            <i class="fa fa-plus-square fa-3x " aria-hidden="true"></i>
+            <i class="fa fa-plus-square fa-3x" aria-hidden="true"></i>
         </div>
         <div class="text_main">
             <h3>"{{input}}"와(과) 일치하는 결과물이 없습니다</h3>
