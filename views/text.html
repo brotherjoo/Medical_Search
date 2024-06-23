@@ -21,14 +21,14 @@
             <div class="sub_symptom">
                 <h5>
                     더 자세한 정보는 아래
-                    <a href="https://www.msdmanuals.com/ko-kr/home">msd</a>
+                    <a href="https://www.msdmanuals.com/ko-kr/home" target="_blank">msd</a>
                     링크로 확인해보세요
                 </h5>
                 <ul>
                     {% for output in outputs %}
                     <li>
                         {{output.name}}:
-                        <a href="{{output.url}}">{{output.url}}</a>
+                        <a href="{{output.url}}" target="_blank">{{output.url}}</a>
                     </li>
                     {% endfor %}
                 </ul>
